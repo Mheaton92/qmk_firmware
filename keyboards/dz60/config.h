@@ -43,4 +43,7 @@
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
 
+/* Stuff I added */
+#define TAPPING_TERM 400
+
 #endif

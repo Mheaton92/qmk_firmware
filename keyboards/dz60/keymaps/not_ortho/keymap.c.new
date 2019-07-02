@@ -1,0 +1,94 @@
+#include QMK_KEYBOARD_H
+
+// Each layer gets a name for readability, which is then used in the keymap matrix below.
+// The underscores don't mean anything - you can have a layer called STUFF or any other name.
+// Layer names don't all need to be of the same length, obviously, and you can also skip them
+// entirely and just use numbers.
+#define BASE 0
+#define LOWER 1                                                                /* Symbols, Media */
+#define RAISE 2                                                               /* Numbers, Arrows */
+#define ADJUST  3
+
+/* short layer aliases */
+#define BA BASE
+#define LW LOWER
+#define RS RAISE
+#define AD ADJUST
+*
+enum {
+ CT_SE = 0,
+ CT_CLN,
+ CT_EGG,
+ CT_FLSH,
+ X_TAP_DANCE
+};
+
+
+/*
+// Mod Tap Definitions
+// -------------------
+                                        //  Tap     Hold
+                                        //  ------------------
+#define GUI_GRV MT(MOD_LGUI, KC_GRV)    //  `       Meta
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)    //  Esc     Left Control
+#define SFT_NUM MT(MOD_LSFT, KC_HASH)   //  #       Left Shift
+#define HPR_RBC MT(MOD_HYPR, KC_RBRC)   //  ]       Hyper
+#define SFT_BSL MT(MOD_RSFT, KC_BSLS)   //  \       Right Shift
+#define GUI_SL MT(MOD_RGUI, KC_SLSH)    //  /       Meta
+#define NUM_H LT(_NUMS, KC_H)           //  H       Layer Numpad
+#define NUM_U LT(_NUMS, KC_U)           //  U       Layer Numpad
+#define CTL_DEL MT(MOD_LCTL, KC_DEL)    //  Del     Left Control
+// Definitions
+#define CAPS_ESC TD(KC_ESC, KC_CAPS)
+*/
+
+
+
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+	[BA] = LAYOUT_directional(
+	    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_LBRC, KC_RBRC, KC_EQL, KC_MUTE,
+	    KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_SLSH, KC_BSLS, KC_DEL,
+	    KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_MINS, KC_ENT, KC_LSFT,
+            CT_CLN, KC_Q,    KC_J,    KC_K,    KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z, KC_PGUP, KC_UP, KC_PGDN,
+	    KC_LCTL, KC_LALT, TT(1),   KC_BSPC, KC_LGUI, KC_SPC, TT(2), KC_RGUI, KC_LEFT, KC_DOWN, KC_RGHT),
+
+
+	[LW] = LAYOUT_directional(
+	    KC_NO, KC_F1, KC_F2,   KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_PSCR, KC_SLCK, KC_PAUS, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_INS,  KC_HOME, KC_PGUP,
+	    KC_NO, MO(3), KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_DEL, KC_END, KC_PGDN),
+
+
+	[RS] = LAYOUT_directional(
+	    KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
+
+
+	[AD] = LAYOUT_directional(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, DEBUG, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, RESET, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO)
+};
+void dance_cln_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    register_code (KC_RSFT);
+    register_code (KC_SCLN);
+  } else {
+    register_code (KC_SCLN);
+  }
+}
+
+void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    unregister_code (KC_RSFT);
+    unregister_code (KC_SCLN);
+  } else {
+    unregister_code (KC_SCLN);
+  }
+}
+
+//All tap dance functions would go here. Only showing this one.
+qk_tap_dance_action_t tap_dance_actions[] = {
+ [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
+};

@@ -1,0 +1,121 @@
+#include QMK_KEYBOARD_H
+
+#define BASE 0
+#define LOWER 1
+#define RAISE 2
+#define ADJUST  3
+
+#define BA BASE
+#define LW LOWER
+#define RS RAISE
+#define AD ADJUST
+
+enum {
+ CT_CLN =0,
+ ESC_CAPS,
+ Q_QUIT
+};
+
+
+void dance_cln_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    register_code (KC_RSFT);
+    register_code (KC_SCLN);
+  } else {
+    register_code (KC_SCLN);
+  }
+}
+
+void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    unregister_code (KC_RSFT);
+    unregister_code (KC_SCLN);
+  } else {
+    unregister_code (KC_SCLN);
+  }
+}
+
+
+
+void dance_finished (qk_tap_dance_state_t *state, void *user_data) {
+  
+    if (state->count == 3) {
+    register_code (KC_RSFT);
+    register_code (KC_LGUI);
+    register_code (KC_Q);
+  } else {
+    register_code (KC_Q);
+  }
+}
+
+void dance_reset (qk_tap_dance_state_t *state, void *user_data) {
+
+  if (state->count == 3) {
+    unregister_code (KC_RSFT);
+    unregister_code (KC_LGUI);
+    unregister_code (KC_Q);
+  } else {
+    unregister_code (KC_Q);
+  }
+
+}
+
+
+
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+ [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset),
+ [ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
+ [Q_QUIT] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_finished, dance_reset),
+};
+
+#define ESC_C   TD(ESC_CAPS)
+#define C_S     TD(CT_CLN)
+#define TERM    G(KC_ENT)
+#define TAB_CTL MT(MOD_LCTL,KC_TAB)
+#define QUIT    TD(Q_QUIT)
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+	[BA] = LAYOUT_directional(
+	    KC_GRV,  KC_1,       KC_2,    KC_3,    KC_4,    KC_5,   KC_6,  KC_7, KC_8,    KC_9,    KC_0,   KC_LBRC, KC_RBRC, KC_EQL, KC_MUTE,
+	    TAB_CTL,  KC_QUOT,    KC_COMM, KC_DOT,  KC_P,    KC_Y,   KC_F,  KC_G, KC_C,    KC_R,    KC_L,   KC_SLSH, KC_BSLS, KC_DEL,
+	    ESC_C,   KC_A,       KC_O,    KC_E,    KC_U,    KC_I,   KC_D,  KC_H, KC_T,    KC_N,    KC_S,   KC_MINS, KC_ENT,
+	    KC_LSFT, C_S, QUIT,    KC_J,    KC_K,    KC_X,   KC_B,  KC_M, KC_W,    KC_V,    KC_Z,   KC_PGUP, KC_UP, KC_PGDN,
+	    KC_LCTL, KC_LALT,    TT(1),   KC_BSPC, KC_LGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
+
+  /* ,-----------------------------------------------------------.
+   * | ` | 1|  2|  3|  4|  5|  6|  7|  8|  9|  0| [ | ] | = |Mute|
+   * |-----------------------------------------------------------|
+   * | Tab |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  \  |
+   * |-----------------------------------------------------------|
+   * |ESC CAP|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |
+   * |-----------------------------------------------------------|
+   * |Shift   | : | q | j |  V|  B|  N|  M|  ,|   |   | PU| ^ |PD|
+   * |-----------------------------------------------------------|
+   * |Ctrl|Gui |Alt |        |    |           |   |   | < | v |> |
+   * `-----------------------------------------------------------'
+   */
+	[LW] = LAYOUT_directional(
+	    KC_NO, KC_F1, KC_F2,   KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_PSCR, KC_SLCK, KC_PAUS, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+	    KC_NO, KC_SCLN, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,  KC_INS,  KC_HOME, KC_PGUP,
+	    KC_NO, MO(3), KC_TRNS, KC_NO, KC_COPY, KC_PASTE, KC_CUT, KC_UNDO, KC_DEL, KC_END, KC_PGDN),
+
+
+	[RS] = LAYOUT_directional(
+	    KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	     KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
+
+
+	[AD] = LAYOUT_directional(
+		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, DEBUG,
+	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, KC_NO, KC_NO,
+	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, KC_NO,
+	     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+	     KC_NO, KC_TRNS, KC_NO, KC_NO, RESET, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO)
+};
+
