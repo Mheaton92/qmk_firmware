@@ -2,15 +2,7 @@
 
 
 This is a handwire I am working on with a layout I made. It is a 4 row ortho linear board.
-  .----------------------------------------------.
-  | ' | , | . | p | y | f | g | c | r | l | / | < |
-  |---|---|---|---|---|---|---|---|---|---|---|---|
-  | a | o | e | u | i | d | h | t | n | s | - |   |
-  |---|---|---|---|---|---|---|---|---|---|---|---|
-  | : | q | j | k | x | b | m | w | v | z |   |   |
-  .-------------.---------------.----------------.
-                |   |   |   |   |
-                .---------------.
+
 
 Keyboard Maintainer: [mheaton92](https://github.com/yourusername)
 
