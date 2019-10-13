@@ -13,6 +13,7 @@ extern keymap_config_t keymap_config;
 #define _NUMS  6                                                                /* Numpad */
 #define _MOVEMENT 7
 #define _ADJUST 16
+#define _MACRO 15
 
 /* short layer aliases */
 #define _BA _BASE
@@ -21,6 +22,7 @@ extern keymap_config_t keymap_config;
 #define _NM _NUMS
 #define _AD _ADJUST
 #define _MV _MOVEMENT
+#define _MA _MACRO
 
 enum custom_keycodes {
   BASE = SAFE_RANGE,
@@ -159,6 +161,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DSTOP  ,    DSTOP  , RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,
         _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______
         )
+
+    [_MA] = LAYOUT_ortho_4x12(
+
+        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______
+        
+      )
 };
 
 void make_it_pink_blue(void) {
