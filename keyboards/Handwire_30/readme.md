@@ -1,12 +1,19 @@
 # Handwire_30
 
-![Handwire_30](imgur.com image replace me!)
 
-A short description of the keyboard/project
+This is a handwire I am working on with a layout I made. It is a 4 row ortho linear board.
+  .----------------------------------------------.
+  | ' | , | . | p | y | f | g | c | r | l | / | < |
+  |---|---|---|---|---|---|---|---|---|---|---|---|
+  | a | o | e | u | i | d | h | t | n | s | - |   |
+  |---|---|---|---|---|---|---|---|---|---|---|---|
+  | : | q | j | k | x | b | m | w | v | z |   |   |
+  .-------------.---------------.----------------.
+                |   |   |   |   |
+                .---------------.
 
-Keyboard Maintainer: [mheaton92](https://github.com/yourusername)  
-Hardware Supported: The PCBs, controllers supported  
-Hardware Availability: links to where you can find this hardware
+Keyboard Maintainer: [mheaton92](https://github.com/yourusername)
+
 
 Make example for this keyboard (after setting up your build environment):
 
