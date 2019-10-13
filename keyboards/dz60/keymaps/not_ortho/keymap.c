@@ -5,10 +5,12 @@
 #define RAISE 2
 #define ADJUST  3
 
+
 #define BA BASE
 #define LW LOWER
 #define RS RAISE
 #define AD ADJUST
+
 
 enum {
  CT_CLN =0,
@@ -38,7 +40,7 @@ void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
 
 
 void dance_finished (qk_tap_dance_state_t *state, void *user_data) {
-  
+
     if (state->count == 3) {
     register_code (KC_RSFT);
     register_code (KC_LGUI);
@@ -81,18 +83,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    TAB_CTL,  KC_QUOT,    KC_COMM, KC_DOT,  KC_P,    KC_Y,   KC_F,  KC_G, KC_C,    KC_R,    KC_L,   KC_SLSH, KC_BSLS, KC_DEL,
 	    ESC_C,   KC_A,       KC_O,    KC_E,    KC_U,    KC_I,   KC_D,  KC_H, KC_T,    KC_N,    KC_S,   KC_MINS, KC_ENT,
 	    KC_LSFT, C_S, QUIT,    KC_J,    KC_K,    KC_X,   KC_B,  KC_M, KC_W,    KC_V,    KC_Z,   KC_PGUP, KC_UP, KC_PGDN,
-	    KC_LCTL, KC_LALT,    TT(1),   KC_BSPC, KC_LGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
+	    KC_LCTL, KC_LALT,    TT(1),   KC_BSPC, KC_RGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
 
   /* ,-----------------------------------------------------------.
    * | ` | 1|  2|  3|  4|  5|  6|  7|  8|  9|  0| [ | ] | = |Mute|
    * |-----------------------------------------------------------|
-   * | Tab |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  \  |
+   * | Tab |  '|  ,|  .|  p|  y|  f|  g|  c|  r|  l|  /|  \| DEL |
    * |-----------------------------------------------------------|
-   * |ESC CAP|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |
+   * |ESC CAP|  A|  o|  e|  u|  i|  d|  h|  t|  n|  s|  -|Return |
    * |-----------------------------------------------------------|
-   * |Shift   | : | q | j |  V|  B|  N|  M|  ,|   |   | PU| ^ |PD|
+   * |Shift   | : | q | j |  k|  x|  b|  M|  w|  v|  z| PU| ^ |PD|
    * |-----------------------------------------------------------|
-   * |Ctrl|Gui |Alt |        |    |           |   |   | < | v |> |
+   * |Ctrl| alt | lw| Bckspc |MOD| space     | Ra |TERM|< | v |> |
    * `-----------------------------------------------------------'
    */
 	[LW] = LAYOUT_directional(
@@ -116,6 +118,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, KC_NO, KC_NO,
 	    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, KC_NO,
 	     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-	     KC_NO, KC_TRNS, KC_NO, KC_NO, RESET, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO)
+	     KC_NO, KC_TRNS, KC_NO, KC_NO, RESET, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 };
 
