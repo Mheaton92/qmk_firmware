@@ -54,7 +54,8 @@ NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https:/
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = yes
-TAP_DANCE_ENABLE=yes
+TAP_DANCE_ENABLE = yes
+KEY_LOCK_ENABLE = yes
 
 LAYOUTS = 60_ansi 60_ansi_split_bs_rshift 60_hhkb 60_iso
 

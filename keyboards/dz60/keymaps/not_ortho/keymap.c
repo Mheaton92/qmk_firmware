@@ -15,7 +15,6 @@
 enum {
  CT_CLN =0,
  ESC_CAPS,
- Q_QUIT
 };
 
 
@@ -39,50 +38,22 @@ void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
 
 
 
-void dance_finished (qk_tap_dance_state_t *state, void *user_data) {
-
-    if (state->count == 3) {
-    register_code (KC_RSFT);
-    register_code (KC_LGUI);
-    register_code (KC_Q);
-  } else {
-    register_code (KC_Q);
-  }
-}
-
-void dance_reset (qk_tap_dance_state_t *state, void *user_data) {
-
-  if (state->count == 3) {
-    unregister_code (KC_RSFT);
-    unregister_code (KC_LGUI);
-    unregister_code (KC_Q);
-  } else {
-    unregister_code (KC_Q);
-  }
-
-}
-
-
-
-
 qk_tap_dance_action_t tap_dance_actions[] = {
  [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset),
  [ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
- [Q_QUIT] = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_finished, dance_reset),
 };
 
 #define ESC_C   TD(ESC_CAPS)
 #define C_S     TD(CT_CLN)
 #define TERM    G(KC_ENT)
 #define TAB_CTL MT(MOD_LCTL,KC_TAB)
-#define QUIT    TD(Q_QUIT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[BA] = LAYOUT_directional(
-	    KC_GRV,  KC_1,       KC_2,    KC_3,    KC_4,    KC_5,   KC_6,  KC_7, KC_8,    KC_9,    KC_0,   KC_LBRC, KC_RBRC, KC_EQL, KC_MUTE,
+	    KC_GRV,  KC_1,       KC_2,    KC_3,    KC_4,    KC_5,   KC_6,  KC_7, KC_8,    KC_9,    KC_0,   KC_LBRC, KC_RBRC, KC_EQL, KC_LOCK,
 	    TAB_CTL,  KC_QUOT,    KC_COMM, KC_DOT,  KC_P,    KC_Y,   KC_F,  KC_G, KC_C,    KC_R,    KC_L,   KC_SLSH, KC_BSLS, KC_DEL,
 	    ESC_C,   KC_A,       KC_O,    KC_E,    KC_U,    KC_I,   KC_D,  KC_H, KC_T,    KC_N,    KC_S,   KC_MINS, KC_ENT,
-	    KC_LSFT, C_S, QUIT,    KC_J,    KC_K,    KC_X,   KC_B,  KC_M, KC_W,    KC_V,    KC_Z,   KC_PGUP, KC_UP, KC_PGDN,
+	    KC_LSFT, C_S,  KC_Q,    KC_J,    KC_K,    KC_X,   KC_B,  KC_M, KC_W,    KC_V,    KC_Z,   KC_PGUP, KC_UP, KC_PGDN,
 	    KC_LCTL, KC_LALT,    TT(1),   KC_BSPC, KC_RGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
 
   /* ,-----------------------------------------------------------.
