@@ -6,7 +6,7 @@ This is a handwire I am working on with a layout I made. It is a 4 row ortho lin
 
 Keyboard Maintainer: [mheaton92](https://github.com/yourusername)
 
-![How it will be wired](https://imgur.com/a/eQc3OpX)
+![How it will be wired](new_handwire.jpg?raw=true "wire")
 
 Make example for this keyboard (after setting up your build environment):
 
