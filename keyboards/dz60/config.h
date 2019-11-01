@@ -44,6 +44,7 @@
 #define RGBLIGHT_VAL_STEP 8
 
 /* Stuff I added */
-#define TAPPING_TERM 400
+#define TAPPING_TERM 200
+#define LEADER_TIMEOUT 400
 
 #endif
