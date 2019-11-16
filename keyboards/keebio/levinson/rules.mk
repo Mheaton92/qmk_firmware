@@ -31,3 +31,4 @@ SPLIT_KEYBOARD = yes
 
 LAYOUTS = ortho_4x12
 DEFAULT_FOLDER = keebio/levinson/rev2
+EXTRAKEY_ENABLE = yes

@@ -51,7 +51,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define TAB_CTL   MT(MOD_LCTL,KC_TAB)
 #define PU_ST     LSFT_T(KC_PGUP)
 #define TEST      KC_A
-
+#define KITTY     (LCTL(KC_LSFT))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[BA] = LAYOUT_directional(
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    TAB_CTL,  KC_QUOT,    KC_COMM, KC_DOT,  KC_P,    KC_Y,   KC_F,  KC_G, KC_C,    KC_R,    KC_L,   KC_SLSH, KC_BSLS, KC_DEL,
 	    ESC_C,   TEST,       KC_O,    KC_E,    KC_U,    KC_I,   KC_D,  KC_H, KC_T,    KC_N,    KC_S,   KC_MINS, KC_ENT,
 	    KC_LSFT, C_S,  KC_Q,    KC_J,    KC_K,    KC_X,   KC_B,  KC_M, KC_W,    KC_V,    KC_Z,   PU_ST, KC_UP, KC_PGDN,
-	    KC_LEAD, KC_LALT,    TT(1),   KC_BSPC, KC_RGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
+	    KITTY, KC_LALT,    TT(1),   KC_BSPC, KC_RGUI, KC_SPC, TT(2), TERM, KC_LEFT, KC_DOWN, KC_RGHT),
 
   /* ,-----------------------------------------------------------.
    * | ` | 1|  2|  3|  4|  5|  6|  7|  8|  9|  0| [ | ] | = |Mute|

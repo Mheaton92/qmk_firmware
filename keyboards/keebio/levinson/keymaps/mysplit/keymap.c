@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+
+
 extern keymap_config_t keymap_config;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
@@ -13,7 +15,6 @@ extern keymap_config_t keymap_config;
 #define _NUMS  6                                                                /* Numpad */
 #define _MOVEMENT 7
 #define _ADJUST 16
-#define _MACRO 15
 
 /* short layer aliases */
 #define _BA _BASE
@@ -22,7 +23,6 @@ extern keymap_config_t keymap_config;
 #define _NM _NUMS
 #define _AD _ADJUST
 #define _MV _MOVEMENT
-#define _MA _MACRO
 
 enum custom_keycodes {
   BASE = SAFE_RANGE,
@@ -80,6 +80,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Shift|      |      |      |      |      |    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|    |------+------+------+------+------+------|
  * | Numpd| Meh  |      |      |      |      |    |      |      |      |      | Hyper| Shift|
+ * |------+------+------+------+------+------|    |------+------+------+------+------+------|
+ * | Numpd| Meh  |      |      |      |      |    |      |      |      |      | Hyper| Shift|
  * `-----------------------------------------'    `-----------------------------------------'
  */
     [_BA] = LAYOUT_ortho_4x12(
@@ -88,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         SFT_NUM, KC_SCLN, KC_Q    , KC_J   , KC_K   , KC_X   , KC_B   , KC_M   , KC_W  , KC_V   , KC_Z   , KC_ENT,
         KC_TAB, MEH_LBC, KC_LALT , KC_LGUI, LOWER  , KC_BSPC, KC_SPC , RAISE  , KC_RCTL, KC_EQL, HPR_RBC, SFT_BSL
         ),
-    
+
  /* Raise
  * ,-----------------------------------------.    ,-----------------------------------------.
  * |   1  |  2   | Up   |  3   |  4   |  5   |    |  6   |  7   |  8   |  9   |  0   |      |
@@ -168,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______
-        
+
       )
 };
 
@@ -213,17 +215,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           if (record->event.pressed) {
               layer_on(_RAISE);
               update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          } else {
-              layer_off(_RAISE);
-              update_tri_layer(_LOWER, _RAISE, _ADJUST);
-          }
-          return false;
-          break;
-      case ADJUST:
-          if (record->event.pressed) {
-              layer_on(_ADJUST);
-          } else {
-              layer_off(_ADJUST);
           }
           return false;
           break;
