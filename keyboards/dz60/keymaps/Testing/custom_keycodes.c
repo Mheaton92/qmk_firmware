@@ -1,11 +1,11 @@
 #define TERM      G(KC_ENT)
 #define TAB_CTL   MT(MOD_LCTL,KC_TAB)
 #define PU_ST     LSFT_T(KC_PGUP)
-#define TEST      KC_A
 #define KITTY     (LCTL(KC_LSFT))
 #define SHIFT_MOD MOD_BIT(KC_LSFT)
 #define ESC_C     TD(ESC_CAPS)
 #define C_S       TD(CT_CLN)
+#define NUMP      LT(5, KC_U)
 
 enum custom_keycodes
 {
@@ -20,6 +20,8 @@ enum custom_keycodes
   SN_7,
   SN_8,
   SN_9,
-  SN_0,
-  T_1,
+  SN_10,
+  SN_11,
+  SN_12,
+  SN_13
 };

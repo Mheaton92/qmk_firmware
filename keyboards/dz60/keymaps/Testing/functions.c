@@ -26,132 +26,15 @@ LEADER_EXTERNS();
 
       }
     }
+
+
 // Makes all the number keys there shifted counterparts come first and the numbers get sent when you press shift.
+    // (Programmers dvorak)
 bool process_record_user(uint16_t keycode, keyrecord_t* record)
 {
     if (record->event.pressed) {
         switch (keycode) {
             case SN_1:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("1");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("!");
-                    }
-                }
-                return false;
-            case SN_2:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("2");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("@");
-                    }
-                }
-                return false;
-            case SN_3:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("3");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("#");
-                    }
-                }
-                return false;
-            case SN_4:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("4");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("$");
-                    }
-                }
-                return false;
-            case SN_5:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("5");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("%");
-                    }
-                }
-                return false;
-            case SN_6:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("6");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("^");
-                    }
-                }
-                return false;
-            case SN_7:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("7");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("&");
-                    }
-                }
-                return false;
-            case SN_8:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("8");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("*");
-                    }
-                }
-                return false;
-            case SN_9:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("9");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING("(");
-                    }
-                }
-                return false;
-            case SN_0:
-                if (record->event.pressed) {
-                    uint8_t current_mods = get_mods();
-                    if (current_mods & SHIFT_MOD) {
-                        clear_mods();
-                        SEND_STRING("0");
-                        set_mods(current_mods);
-                    } else {
-                        SEND_STRING(")");
-                    }
-                }
-                return false;
-             case T_1:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -163,6 +46,152 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                     }
                 }
                 return false;
+            case SN_2:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("%");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("&");
+                    }
+                }
+                return false;
+     
+            case SN_3:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("7");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("[");
+                    }
+                }
+                return false;
+            case SN_4:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("5");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("{");
+                    }
+                }
+                return false;
+            case SN_5:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("3");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("}");
+                    }
+                }
+                return false;
+            case SN_6:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("1");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("(");
+                    }
+                }
+                return false;
+            case SN_7:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("9");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("=");
+                    }
+                }
+                return false;
+            case SN_8:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("0");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("*");
+                    }
+                }
+                return false;
+            case SN_9:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("2");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING(")");
+                    }
+                }
+                return false;
+            case SN_10:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("4");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("+");
+                    }
+                }
+                return false;
+            case SN_11:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("6");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("]");
+                    }
+                }
+                return false;
+            case SN_12:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("8");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("!");
+                    }
+                }
+                return false;
+            case SN_13:
+                if (record->event.pressed) {
+                    uint8_t current_mods = get_mods();
+                    if (current_mods & SHIFT_MOD) {
+                        clear_mods();
+                        SEND_STRING("@");
+                        set_mods(current_mods);
+                    } else {
+                        SEND_STRING("^");
+                    }
+                }
+                return false;
+
         }
     }
     return true;
