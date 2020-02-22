@@ -12,7 +12,14 @@
 #define SFT_MIN MT(MOD_LSFT, KC_MINS)   //   -     SHIFT
 #define BK_SFT  MT(MOD_LSFT, KC_BSPC)   //  BKSPC  SHIFT
 
+
+
 										// Tap Dance Definitions
 										// --------------------
 										// Single   Double
 #define C_S       TD(CT_CLN)			// :		;
+
+enum custom_keycodes {
+  NAS = SAFE_RANGE,
+  CHMOD,
+};

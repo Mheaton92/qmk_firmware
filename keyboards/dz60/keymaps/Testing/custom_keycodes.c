@@ -6,9 +6,10 @@
 #define ESC_C     TD(ESC_CAPS)
 #define C_S       TD(CT_CLN)
 #define NUMP      LT(5, KC_U)
+#define MCB       LSFT(KC_O)
 
-enum custom_keycodes
-{
+
+enum custom_keycodes {
   CT_CLN = 0,
   ESC_CAPS,
   SN_1 = SAFE_RANGE,
@@ -23,5 +24,8 @@ enum custom_keycodes
   SN_10,
   SN_11,
   SN_12,
-  SN_13
+  SN_13,
+  NAS,
+  CHMOD,
+
 };

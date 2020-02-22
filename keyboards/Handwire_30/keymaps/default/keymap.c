@@ -2,7 +2,7 @@
 #include "layers.c"
 #include "custom_keycodes.c"
 #include "tap_dance.c"
-
+#include "functions.c"
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

@@ -27,6 +27,9 @@ LEADER_EXTERNS();
       }
     }
 
+bool left_shift_down = false;
+bool right_shift_down = false;
+
 
 // Makes all the number keys there shifted counterparts come first and the numbers get sent when you press shift.
     // (Programmers dvorak)
@@ -191,8 +194,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                     }
                 }
                 return false;
+            case NAS:
+                if (record->event.pressed) {
+                    SEND_STRING("192.168.1.");
+                } else {
+
+                }
+                break;
+            case CHMOD:
+                if (record->event.pressed) {
+                    SEND_STRING("chmod 775 ");
+                } else {
+
+                }
+                break;                
 
         }
     }
     return true;
 };
+
